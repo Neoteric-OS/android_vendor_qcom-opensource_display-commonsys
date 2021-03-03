@@ -151,6 +151,8 @@ static bool getGralloc4Array(MetaData_t *metadata, int32_t paramType) {
       return metadata->isVendorMetadataSet[GET_VENDOR_METADATA_STATUS_INDEX(QTI_S3D_FORMAT)];
     case CRC_BUFFER:
         return metadata->isVendorMetadataSet[GET_VENDOR_METADATA_STATUS_INDEX(QTI_CRC_BUFFER)];
+    case SET_UNUSED:
+      return false;
     default:
       ALOGE("paramType %d not supported", paramType);
       return false;
@@ -217,6 +219,8 @@ static void setGralloc4Array(MetaData_t *metadata, int32_t paramType, bool isSet
       break;
     case CRC_BUFFER:
       metadata->isVendorMetadataSet[GET_VENDOR_METADATA_STATUS_INDEX(QTI_CRC_BUFFER)] = isSet;
+      break;
+    case SET_UNUSED:
       break;
     default:
       ALOGE("paramType %d not supported in Gralloc4", paramType);
