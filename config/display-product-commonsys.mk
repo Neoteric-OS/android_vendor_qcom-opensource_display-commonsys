@@ -8,7 +8,7 @@ PRODUCT_PACKAGES += libdisplayconfig.system \
 
 SOONG_CONFIG_NAMESPACES += qtidisplaycommonsys
 # Soong Keys
-SOONG_CONFIG_qtidisplaycommonsys := displayextension composer3ext qticomposerversion gralloc_handle_has_no_reserved_size gralloc_handle_has_no_custom_content_md_reserved_size
+SOONG_CONFIG_qtidisplaycommonsys := displayextension composer3ext qticomposerversion gralloc_handle_has_no_reserved_size gralloc_handle_has_no_custom_content_md_reserved_size gralloc_handle_has_no_ubwcp
 # Soong Values
 
 # displayextension controls global compile time disablement of SF extensions
@@ -69,4 +69,10 @@ SOONG_CONFIG_qtidisplaycommonsys_gralloc_handle_has_no_custom_content_md_reserve
 
 ifeq ($(TARGET_GRALLOC_HANDLE_HAS_NO_CUSTOM_CONTENT_MD_RESERVED_SIZE),true)
     SOONG_CONFIG_qtidisplaycommonsys_gralloc_handle_has_no_custom_content_md_reserved_size := true
+endif
+
+SOONG_CONFIG_qtidisplaycommonsys_gralloc_handle_has_no_ubwcp := false
+
+ifeq ($(TARGET_GRALLOC_HANDLE_HAS_NO_UBWCP),true)
+    SOONG_CONFIG_qtidisplaycommonsys_gralloc_handle_has_no_ubwcp := true
 endif
