@@ -5,6 +5,7 @@ soong_config_module_type {
     bool_variables: [
         "gralloc_handle_has_no_reserved_size",
         "gralloc_handle_has_no_custom_content_md_reserved_size",
+        "gralloc_handle_has_no_ubwcp",
     ],
     properties: [
         "cflags",
@@ -19,6 +20,9 @@ qtidisplaycommonsys_cc_defaults {
         },
         gralloc_handle_has_no_custom_content_md_reserved_size: {
             cflags: ["-DGRALLOC_HANDLE_HAS_NO_CUSTOM_CONTENT_MD_RESERVED_SIZE"],
+        },
+        gralloc_handle_has_no_ubwcp: {
+            cflags: ["-DGRALLOC_HANDLE_HAS_NO_UBWCP"],
         },
     },
 }
