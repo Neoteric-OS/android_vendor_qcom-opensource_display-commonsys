@@ -35,11 +35,27 @@ endif
 # PLATFORM_VERSION_CODENAME until the FRC stage.
 SOONG_CONFIG_qtidisplaycommonsys_qticomposerversion := composer3_v3
 
+# Two key build properties: PLATFORM_VERSION_CODENAME and PLATFORM_VERSION.
+# PLATFORM_VERSION_CODENAME holds the string codename of the current Android version.
+# PLATFORM_VERSION contains the version number of the current Android version.
+# Before FRC, PLATFORM_VERSION matches with PLATFORM_VERSION_CODENAME.
+# Example:
+# Android V (After FRC)
+#   PLATFORM_VERSION_CODENAME = VanillaIceCream, PLATFORM_VERSION = 15
+# Android W (Before FRC)
+#   PLATFORM_VERSION_CODENAME = W, PLATFORM_VERSION = W
+# Android W (After FRC)
+#   PLATFORM_VERSION_CODENAME = W, PLATFORM_VERSION = 16
+
 # TODO: Update VanillaIceCream to Android W's code name
-ifeq ($(PLATFORM_VERSION_CODENAME), VanillaIceCream)
-    ifeq ($(PLATFORM_VERSION), $(filter $(PLATFORM_VERSION), VanillaIceCream 16))
+ifeq ($(PLATFORM_VERSION_CODENAME), $(PLATFORM_VERSION))
+    # TODO: Update VanillaIceCream to Android W's code name
+    ifeq ($(PLATFORM_VERSION), $(filter $(PLATFORM_VERSION), VanillaIceCream))
         SOONG_CONFIG_qtidisplaycommonsys_qticomposerversion := composer3_v4
-    else
+    endif
+else
+    # TODO: Add Android W's code name and version number
+    ifeq ($(PLATFORM_VERSION), $(filter $(PLATFORM_VERSION), VanillaIceCream 15))
         SOONG_CONFIG_qtidisplaycommonsys_qticomposerversion := composer3_v3
     endif
 endif
